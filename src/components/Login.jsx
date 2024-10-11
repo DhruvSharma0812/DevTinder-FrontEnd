@@ -8,10 +8,10 @@ const Login = () => {
 
   const [emailId, setemailId] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState ("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userData = useSelector ((store) => store.user);
-  console.log (userData)
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -28,7 +28,9 @@ const Login = () => {
       dispatch(addUser(res.data));
       return navigate ("/");
     } catch (err) {
-      console.log(err.response ? err.response.data : err.message);
+      const errorMessage = err?.response?.data || "Something went wrong";
+      setError (errorMessage);
+      console.log(errorMessage);
     }
   };
 
@@ -77,6 +79,8 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+
+          <p className="text-red-500 mb-4"> {error} </p>
 
           {/* Submit Button */}
           <div className="flex items-center justify-between">
