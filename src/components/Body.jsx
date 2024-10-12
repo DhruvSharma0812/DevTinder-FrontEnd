@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { addUser } from '../utils/userSlice'
 import { useEffect } from 'react'
+import { BASE_URL } from '../utils/constants'
 
 const Body = () => {
 
@@ -12,10 +13,11 @@ const Body = () => {
     const navigate = useNavigate();
     const userData = useSelector ((store) => store.user);
 
+
     const fetchUser = async () => {
         if (userData) return;
         try {
-            const res = await axios.get ("http://localhost:7777/profile/view" , {
+            const res = await axios.get (BASE_URL + "/profile/view" , {
                 withCredentials : true,
             });
 

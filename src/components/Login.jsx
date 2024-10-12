@@ -3,6 +3,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
 
@@ -17,15 +18,14 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:7777/login", {
+      const res = await axios.post(BASE_URL + "/login", {
         emailId,
         password,
       },
       {
         withCredentials: true,
       });
-
-      dispatch(addUser(res.data));
+      dispatch(addUser(res.data.data));
       return navigate ("/");
     } catch (err) {
       const errorMessage = err?.response?.data || "Something went wrong";
