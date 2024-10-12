@@ -45,7 +45,7 @@ const UserCard = (user) => {
                     {/* Skills Section */}
                     {skills.length > 0 && (
                         <div className="mt-4">
-                            <h3 className="text-md font-semibold text-gray-700">Skills</h3>
+                            <h3 className="text-md font-bold text-white">Skills</h3>
                             <div className="flex flex-wrap gap-2 mt-2">
                                 {skills.map((skill, index) => (
                                     <span
