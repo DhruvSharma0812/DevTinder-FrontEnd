@@ -3,6 +3,7 @@ import { BASE_URL } from "../utils/constants";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnection } from "../utils/connectionSlice";
+import { Link } from "react-router-dom";
 
 const Connections = () => {
   const dispatch = useDispatch();
@@ -56,6 +57,13 @@ const Connections = () => {
                   </p>
                 )}
                 <p className="text-white">{about}</p>
+
+                <Link to={"/chat/" + _id} className="flex justify-center">
+                  <button className="px-6 py-2 mt-3 text-white font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg shadow-md hover:from-indigo-600 hover:to-purple-700 hover:scale-105 transition-all duration-300 active:scale-95">
+                    Chat
+                  </button>
+                </Link>
+
               </div>
             </div>
           );
